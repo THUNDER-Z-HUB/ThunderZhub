@@ -18,7 +18,7 @@ local Window = Fluent:CreateWindow({
 })
 
 local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "Main" }),
+    Main = Window:AddTab({ Title = "Main", Icon = "list" }),
     Shop = Window:AddTab({ Title = "Shop", Icon = "Shop" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
@@ -37,8 +37,9 @@ InterfaceSection:AddButton({
     end
 })
 
-local AutoCastToggle = Tabs.Main:AddToggle("AutoCast", { Title = "Auto Win", Default = false })
+local InterfaceSection = Tabs.Main:AddSection("Auto Farm")
 
+local AutoCastToggle = Tabs.Main:AddToggle("AutoCast", { Title = "Auto Win", Default = false })
 AutoCastToggle:OnChanged(function(state)
     _G.AutoCast = state
     if state then
@@ -110,22 +111,11 @@ Tabs.Main:AddButton({
         Title = "Buy Helicopter",
         Description = "",
         Callback = function()
-            Window:Dialog({
-                Title = "Buy Helicopter",
-                Content = "",
-                Buttons = {
-                    {
-                        Title = "Buy",
-                        Callback = function()
-                            local args = {
-                                [1] = game:GetService("Players").LocalPlayer
-                            }
-                            
-                            game:GetService("ReplicatedStorage"):WaitForChild("HeliEvents"):WaitForChild("remote1"):FireServer(unpack(args))
-                        end
-                    }
-                }
-            })
+            local args = {
+                [1] = game:GetService("Players").LocalPlayer
+            }
+                                
+            game:GetService("ReplicatedStorage"):WaitForChild("HeliEvents"):WaitForChild("remote1"):FireServer(unpack(args))
         end
     })
 
@@ -133,102 +123,47 @@ Tabs.Main:AddButton({
         Title = "Buy Super Car",
         Description = "",
         Callback = function()
-            Window:Dialog({
-                Title = "Buy Super Car",
-                Content = "",
-                Buttons = {
-                    {
-                        Title = "Buy",
-                        Callback = function()
-                            local args = {
-                                [1] = game:GetService("Players").LocalPlayer
-                            }
-                            
-                            game:GetService("ReplicatedStorage"):WaitForChild("Car_Prompt"):FireServer(unpack(args))
-                        end
-                    }
-                }
-            })
+            local args = {
+                [1] = game:GetService("Players").LocalPlayer
+            }
+            
+            game:GetService("ReplicatedStorage"):WaitForChild("Car_Prompt"):FireServer(unpack(args))
         end
     })
-
-    Tabs.Shop:AddParagraph({
-        Title = "Buy Helicopter & Super Car",
-        Content = ""
-    })
-
 
     Tabs.Shop:AddButton({
         Title = "Buy Diamond Carpet",
         Description = "",
         Callback = function()
-            Window:Dialog({
-                Title = "Buy Diamond Carpet",
-                Content = "",
-                Buttons = {
-                    {
-                        Title = "Buy",
-                        Callback = function()
-                            local args = {
-                                [1] = game:GetService("Players").LocalPlayer
-                            }
-                            
-                            game:GetService("ReplicatedStorage"):WaitForChild("CarpetsEvents"):WaitForChild("DiamondPrompt"):FireServer(unpack(args))
-                        end
-                    }
-                }
-            })
+            local args = {
+                [1] = game:GetService("Players").LocalPlayer
+            }
+            
+            game:GetService("ReplicatedStorage"):WaitForChild("CarpetsEvents"):WaitForChild("DiamondPrompt"):FireServer(unpack(args))
         end
     })
 
-    Tabs.Shop:AddButton({
+        Tabs.Shop:AddButton({
         Title = "Buy Gold Carpet",
         Description = "",
         Callback = function()
-            Window:Dialog({
-                Title = "Buy Gold Carpet",
-                Content = "",
-                Buttons = {
-                    {
-                        Title = "Buy",
-                        Callback = function()
-                            local args = {
-                                [1] = game:GetService("Players").LocalPlayer
-                            }
-                            
-                            game:GetService("ReplicatedStorage"):WaitForChild("CarpetsEvents"):WaitForChild("GoldenPrompt"):FireServer(unpack(args))
-                        end
-                    }
-                }
-            })
-        end
-    })
+            local args = {
+                [1] = game:GetService("Players").LocalPlayer
+            }
 
-    Tabs.Shop:AddParagraph({
-        Title = "Buy Speed Tools",
-        Content = ""
+            game:GetService("ReplicatedStorage"):WaitForChild("CarpetsEvents"):WaitForChild("GoldenPrompt"):FireServer(unpack(args))
+        end
     })
 
     Tabs.Shop:AddButton({
         Title = "Buy Fire Coil",
         Description = "",
         Callback = function()
-            Window:Dialog({
-                Title = "Buy Fire Coil",
-                Content = "",
-                Buttons = {
-                    {
-                        Title = "Buy",
-                        Callback = function()
-                            local args = {
-                                [1] = game:GetService("Players").LocalPlayer
-                            }
-                            
-                            game:GetService("ReplicatedStorage"):WaitForChild("Money_Coil_Remotes"):WaitForChild("Fire"):FireServer(unpack(args))
-                        end
-                    }
-                }
-            })
+            local args = {
+                [1] = game:GetService("Players").LocalPlayer
+            }
+            
+            game:GetService("ReplicatedStorage"):WaitForChild("Money_Coil_Remotes"):WaitForChild("Fire"):FireServer(unpack(args))
         end
     })
 
@@ -236,51 +171,25 @@ Tabs.Main:AddButton({
         Title = "Buy Gold Coil",
         Description = "",
         Callback = function()
-            Window:Dialog({
-                Title = "Buy Gold Coil",
-                Content = "",
-                Buttons = {
-                    {
-                        Title = "Buy",
-                        Callback = function()
-                            local args = {
-                                [1] = game:GetService("Players").LocalPlayer
-                            }
-                            
-                            game:GetService("ReplicatedStorage"):WaitForChild("Money_Coil_Remotes"):WaitForChild("CoilGold"):FireServer(unpack(args))
-                        end
-                    }
-                }
-            })
+            local args = {
+                [1] = game:GetService("Players").LocalPlayer
+            }
+            
+            game:GetService("ReplicatedStorage"):WaitForChild("Money_Coil_Remotes"):WaitForChild("CoilGold"):FireServer(unpack(args))            
         end
     })
-
 
     Tabs.Shop:AddButton({
         Title = "Buy Void Coil",
         Description = "",
         Callback = function()
-            Window:Dialog({
-                Title = "Buy Void Coil",
-                Content = "",
-                Buttons = {
-                    {
-                        Title = "Buy",
-                        Callback = function()
-                            local args = {
-                                [1] = game:GetService("Players").LocalPlayer
-                            }
-                            
-                            game:GetService("ReplicatedStorage"):WaitForChild("Money_Coil_Remotes"):WaitForChild("Void"):FireServer(unpack(args))
-                        end
-                    }
-                }
-            })
+            local args = {
+                [1] = game:GetService("Players").LocalPlayer
+            }
+            
+            game:GetService("ReplicatedStorage"):WaitForChild("Money_Coil_Remotes"):WaitForChild("Void"):FireServer(unpack(args))            
         end
     })
-
-
-
 
 -- Addons:
 -- SaveManager (Allows you to have a configuration system)
